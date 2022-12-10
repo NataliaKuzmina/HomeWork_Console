@@ -1,4 +1,28 @@
-﻿void Zadacha25()
+﻿void FillArray(int[] nums, int minValue, int maxValue)
+{
+    maxValue++;
+    Random rand = new Random();
+    int length = nums.Length;
+    for (int i = 0; i < length; i++)
+    {
+        nums[i] = rand.Next(minValue, maxValue);
+    }
+}
+
+
+void PrintArray(int[] nums)
+{
+    int length = nums.Length;
+    Console.WriteLine("Вывод массива: ");
+    for (int i = 0; i < length; i++)
+    {
+        Console.Write(nums[i] + " ");
+    }
+    Console.WriteLine();
+    Console.WriteLine();
+}
+
+void Zadacha25()
 {
     //Задача 25: Используя определение степени числа, напишите цикл, 
     //который принимает на вход два натуральных числа (A и B) и возводит число A в степень B.
@@ -42,4 +66,29 @@ void Zadacha27()
     Console.WriteLine("Сумма цифр в числе: " + sum);
 }
 
-Zadacha27();
+
+
+
+void Zadacha29()
+{
+    int size = 12;
+    int[] numbers = new int[size];
+    FillArray(numbers, -90, 90);
+    PrintArray(numbers);
+
+    for (int i = 0; i < size - 1; i++)
+    {
+        for (int j = 0; j < size - 1 - i; j++)
+        {
+            if (Math.Abs(numbers[j]) > Math.Abs(numbers[j + 1]))
+            {
+                int temp = numbers[j];
+                numbers[j] = numbers[j+1];
+                numbers[j+1] = temp;
+            }
+        }
+    }
+    PrintArray(numbers);
+}
+    Zadacha29();
+
